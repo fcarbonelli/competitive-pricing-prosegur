@@ -1,0 +1,101 @@
+declare module "react-plotly.js" {
+  import { Component } from "react";
+
+  interface PlotParams {
+    data: Plotly.Data[];
+    layout?: Partial<Plotly.Layout>;
+    config?: Partial<Plotly.Config>;
+    style?: React.CSSProperties;
+    className?: string;
+    useResizeHandler?: boolean;
+    onInitialized?: (figure: Plotly.Figure, graphDiv: HTMLElement) => void;
+    onUpdate?: (figure: Plotly.Figure, graphDiv: HTMLElement) => void;
+    onPurge?: (figure: Plotly.Figure, graphDiv: HTMLElement) => void;
+    onError?: (error: Error) => void;
+  }
+
+  export default class Plot extends Component<PlotParams> { }
+}
+
+declare namespace Plotly {
+  interface Data {
+    type?: string;
+    x?: (string | number)[];
+    y?: number[];
+    name?: string;
+    marker?: {
+      color?: string;
+      size?: number;
+    };
+    fillcolor?: string;
+    line?: {
+      color?: string;
+      width?: number;
+    };
+    boxpoints?: boolean | string;
+    offsetgroup?: string;
+    legendgroup?: string;
+    showlegend?: boolean;
+  }
+
+  interface Layout {
+    title?: string | { text: string; font?: { size?: number; color?: string } };
+    showlegend?: boolean;
+    legend?: {
+      orientation?: "h" | "v";
+      x?: number;
+      y?: number;
+      xanchor?: string;
+      yanchor?: string;
+    };
+    boxmode?: string;
+    boxgap?: number;
+    boxgroupgap?: number;
+    margin?: { t?: number; b?: number; l?: number; r?: number };
+    xaxis?: {
+      title?: string;
+      tickfont?: { size?: number; color?: string };
+      gridcolor?: string;
+    };
+    hoverlabel?: {
+      bgcolor?: string;
+      font?: { color?: string; size?: number };
+      bordercolor?: string;
+    };
+    yaxis?: {
+      title?: string;
+      tickformat?: string;
+      tickprefix?: string;
+      gridcolor?: string;
+      zerolinecolor?: string;
+      titlefont?: { size?: number; color?: string };
+      tickfont?: { size?: number; color?: string };
+    };
+    annotations?: Partial<Annotations>[];
+    paper_bgcolor?: string;
+    plot_bgcolor?: string;
+  }
+
+  interface Annotations {
+    x: number | string;
+    y: number;
+    text: string;
+    showarrow: boolean;
+    font?: { size?: number; color?: string; family?: string };
+    xanchor?: string;
+    yanchor?: string;
+    xref?: string;
+    yref?: string;
+  }
+
+  interface Config {
+    responsive?: boolean;
+    displayModeBar?: boolean;
+    displaylogo?: boolean;
+  }
+
+  interface Figure {
+    data: Data[];
+    layout: Partial<Layout>;
+  }
+}
