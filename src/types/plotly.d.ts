@@ -38,8 +38,14 @@ declare namespace Plotly {
     showlegend?: boolean;
   }
 
+  interface Font {
+    size?: number;
+    color?: string;
+    family?: string;
+  }
+
   interface Layout {
-    title?: string | { text: string; font?: { size?: number; color?: string } };
+    title?: string | { text: string; font?: Font };
     showlegend?: boolean;
     legend?: {
       orientation?: "h" | "v";
@@ -47,6 +53,8 @@ declare namespace Plotly {
       y?: number;
       xanchor?: string;
       yanchor?: string;
+      font?: Font;
+      bgcolor?: string;
     };
     boxmode?: string;
     boxgap?: number;
@@ -54,12 +62,12 @@ declare namespace Plotly {
     margin?: { t?: number; b?: number; l?: number; r?: number };
     xaxis?: {
       title?: string;
-      tickfont?: { size?: number; color?: string };
+      tickfont?: Font;
       gridcolor?: string;
     };
     hoverlabel?: {
       bgcolor?: string;
-      font?: { color?: string; size?: number };
+      font?: Font;
       bordercolor?: string;
     };
     yaxis?: {
@@ -68,8 +76,8 @@ declare namespace Plotly {
       tickprefix?: string;
       gridcolor?: string;
       zerolinecolor?: string;
-      titlefont?: { size?: number; color?: string };
-      tickfont?: { size?: number; color?: string };
+      titlefont?: Font;
+      tickfont?: Font;
     };
     annotations?: Partial<Annotations>[];
     paper_bgcolor?: string;
