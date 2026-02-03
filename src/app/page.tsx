@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { Filters } from "@/components/filters";
 import { BoxplotChart } from "@/components/boxplot";
 import { PromoAnalytics } from "@/components/promo-analytics";
+import { PriceTable } from "@/components/price-table";
 import { FilterState } from "@/lib/types";
 import {
   parseData,
@@ -11,6 +12,7 @@ import {
   generateBoxplotComparisons,
   generatePromoAnalysis,
   generatePromoAnalysisByCompetitor,
+  filterData,
 } from "@/lib/data";
 
 /**
@@ -59,6 +61,12 @@ export default function Dashboard() {
   // Generate promo analysis by competitor
   const promoByCompetitor = useMemo(
     () => generatePromoAnalysisByCompetitor(data, filters),
+    [data, filters]
+  );
+
+  // Get filtered data for tables
+  const filteredData = useMemo(
+    () => filterData(data, filters),
     [data, filters]
   );
 
@@ -135,8 +143,8 @@ export default function Dashboard() {
             <button
               onClick={() => setActiveTab("precios")}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${activeTab === "precios"
-                  ? "bg-indigo-500 text-white shadow-sm"
-                  : "text-slate-600 hover:bg-slate-100"
+                ? "bg-indigo-500 text-white shadow-sm"
+                : "text-slate-600 hover:bg-slate-100"
                 }`}
             >
               Comparación de Precios
@@ -144,8 +152,8 @@ export default function Dashboard() {
             <button
               onClick={() => setActiveTab("promociones")}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${activeTab === "promociones"
-                  ? "bg-indigo-500 text-white shadow-sm"
-                  : "text-slate-600 hover:bg-slate-100"
+                ? "bg-indigo-500 text-white shadow-sm"
+                : "text-slate-600 hover:bg-slate-100"
                 }`}
             >
               Análisis de Promociones
@@ -171,6 +179,14 @@ export default function Dashboard() {
                 baseLabel="BASE"
                 promoLabel="PROMO"
               />
+              {/* Price Table for Recurrente */}
+              <div className="mt-4">
+                <PriceTable
+                  data={filteredData}
+                  title="Precio Promedio Recurrente por Tipo de Kit"
+                  priceType="recurrente"
+                />
+              </div>
             </section>
 
             {/* PRECIO ALTA Comparison */}
@@ -188,6 +204,14 @@ export default function Dashboard() {
                 baseLabel="BASE"
                 promoLabel="PROMO"
               />
+              {/* Price Table for Alta */}
+              <div className="mt-4">
+                <PriceTable
+                  data={filteredData}
+                  title="Precio Promedio de Alta por Tipo de Kit"
+                  priceType="alta"
+                />
+              </div>
             </section>
           </div>
         ) : (
