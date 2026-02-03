@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { BoxplotComparison } from "@/lib/types";
+import { getCompetitorConfig } from "@/lib/constants";
 
 // Dynamically import Plotly to avoid SSR issues
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
@@ -14,8 +15,48 @@ interface BoxplotChartProps {
 }
 
 /**
+ * Competitor legend with logos
+ */
+function CompetitorLegend({ competitors }: { competitors: string[] }) {
+  if (competitors.length === 0 || (competitors.length === 1 && competitors[0] === "Todos")) {
+    return null;
+  }
+
+  return (
+    <div className="flex flex-wrap gap-4 mb-4 p-3 bg-slate-50 rounded-lg">
+      {competitors.map((name) => {
+        const config = getCompetitorConfig(name);
+        return (
+          <div key={name} className="flex items-center gap-2">
+            <img
+              src={config.logo}
+              alt={`${name} logo`}
+              className="w-6 h-6 object-contain"
+            />
+            <span className="text-sm font-medium text-slate-700">{name}</span>
+            <div className="flex items-center gap-1 ml-1">
+              <div
+                className="w-3 h-3 rounded"
+                style={{ backgroundColor: config.color }}
+                title="BASE"
+              />
+              <div
+                className="w-3 h-3 rounded border-2 border-dashed"
+                style={{ borderColor: config.color, backgroundColor: 'transparent' }}
+                title="PROMO"
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/**
  * BoxPlot chart component using Plotly
  * Displays side-by-side comparison of BASE vs PROMOCIONAL prices
+ * Colors are based on competitor brand colors
  */
 export function BoxplotChart({
   title,
@@ -34,28 +75,33 @@ export function BoxplotChart({
     );
   }
 
+  // Get list of competitors for legend
+  const competitors = comparisons.map((c) => c.label);
+
   // Prepare data for Plotly
   const traces: Plotly.Data[] = [];
 
-  // Vibrant colors for BASE and PROMO
-  const baseColor = "rgba(99, 102, 241, 0.7)"; // Indigo
-  const baseLine = "rgb(79, 70, 229)"; // Darker indigo
-  const promoColor = "rgba(16, 185, 129, 0.7)"; // Emerald
-  const promoLine = "rgb(5, 150, 105)"; // Darker emerald
-
   comparisons.forEach((comp, index) => {
+    // Get competitor colors
+    const config = getCompetitorConfig(comp.label);
+    const baseColor = config.colorLight;
+    const baseLine = config.color;
+    // Promo uses a lighter/desaturated version
+    const promoColor = config.colorLight.replace("0.6", "0.3");
+    const promoLine = config.color;
+
     // BASE boxplot
     traces.push({
       type: "box",
       y: comp.base.values,
-      name: baseLabel,
+      name: `${comp.label} - ${baseLabel}`,
       x: Array(comp.base.values.length).fill(`${comp.label}`),
       boxpoints: false,
       marker: { color: baseLine },
       fillcolor: baseColor,
       line: { color: baseLine, width: 2 },
       offsetgroup: `${index}-base`,
-      legendgroup: baseLabel,
+      legendgroup: comp.label,
       showlegend: index === 0,
     } as Plotly.Data);
 
@@ -63,15 +109,15 @@ export function BoxplotChart({
     traces.push({
       type: "box",
       y: comp.promo.values,
-      name: promoLabel,
+      name: `${comp.label} - ${promoLabel}`,
       x: Array(comp.promo.values.length).fill(`${comp.label}`),
       boxpoints: false,
       marker: { color: promoLine },
       fillcolor: promoColor,
-      line: { color: promoLine, width: 2 },
+      line: { color: promoLine, width: 2, dash: "dot" },
       offsetgroup: `${index}-promo`,
-      legendgroup: promoLabel,
-      showlegend: index === 0,
+      legendgroup: comp.label,
+      showlegend: false,
     } as Plotly.Data);
   });
 
@@ -123,6 +169,7 @@ export function BoxplotChart({
 
   return (
     <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
+      <CompetitorLegend competitors={competitors} />
       <Plot
         data={traces}
         layout={layout}

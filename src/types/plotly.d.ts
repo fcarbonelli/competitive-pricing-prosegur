@@ -25,17 +25,25 @@ declare namespace Plotly {
     name?: string;
     marker?: {
       color?: string;
+      colors?: string[];
       size?: number;
     };
     fillcolor?: string;
     line?: {
       color?: string;
       width?: number;
+      dash?: string;
     };
     boxpoints?: boolean | string;
     offsetgroup?: string;
     legendgroup?: string;
     showlegend?: boolean;
+    // Pie chart properties
+    values?: number[];
+    labels?: string[];
+    hole?: number;
+    textinfo?: string;
+    textposition?: string;
   }
 
   interface Font {

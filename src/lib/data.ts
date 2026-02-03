@@ -1,4 +1,4 @@
-import { PricingDataRow, FilterState, BoxplotStats, BoxplotComparison } from "./types";
+import { PricingDataRow, FilterState, BoxplotStats, BoxplotComparison, PromoAnalysis, PromoAnalysisByCompetitor } from "./types";
 
 // Import the JSON data directly
 import rawData from "@/data/pricing-data.json";
@@ -271,4 +271,95 @@ export function getAvailableFilterOptions(data: PricingDataRow[], currentFilters
   const paises = [...new Set(data.map((d) => d.pais))].sort();
 
   return { paises, competidores, segmentos, tamanos };
+}
+
+/**
+ * Check if a row has a promo (based on presenciaPromociones field)
+ */
+function hasPromo(row: PricingDataRow): boolean {
+  const value = row.presenciaPromociones?.toLowerCase().trim();
+  return value === "si" || value === "sí" || value === "yes";
+}
+
+/**
+ * Calculate promo analysis for a set of data rows
+ */
+function calculatePromoAnalysis(rows: PricingDataRow[]): PromoAnalysis {
+  const withPromo = rows.filter(hasPromo);
+  const withoutPromo = rows.filter(r => !hasPromo(r));
+
+  // Average promo amount (only for rows with promo and non-null montoPromo > 0)
+  const promoAmounts = withPromo
+    .map(r => r.montoPromo)
+    .filter((v): v is number => v !== null && v > 0);
+  const avgPromoAmount = promoAmounts.length > 0
+    ? promoAmounts.reduce((a, b) => a + b, 0) / promoAmounts.length
+    : 0;
+
+  // Average recurring promo percentage (only for rows with actual promo discount)
+  const recurringPercents = withPromo
+    .map(r => r.porcentajePromocionRecurrente)
+    .filter((v): v is number => v !== null && v < 0); // Negative means discount
+  const avgRecurringPromoPercent = recurringPercents.length > 0
+    ? Math.abs(recurringPercents.reduce((a, b) => a + b, 0) / recurringPercents.length) * 100
+    : 0;
+
+  // Average alta promo percentage (only for rows with actual promo discount)
+  const altaPercents = rows
+    .map(r => r.porcentajePromocionAlta)
+    .filter((v): v is number => v !== null && v !== 0);
+  const avgAltaPromoPercent = altaPercents.length > 0
+    ? Math.abs(altaPercents.reduce((a, b) => a + b, 0) / altaPercents.length) * 100
+    : 0;
+
+  return {
+    avgPromoAmount,
+    avgRecurringPromoPercent,
+    avgAltaPromoPercent,
+    withPromoCount: withPromo.length,
+    withoutPromoCount: withoutPromo.length,
+    totalCount: rows.length,
+  };
+}
+
+/**
+ * Generate promo analysis for filtered data
+ */
+export function generatePromoAnalysis(
+  data: PricingDataRow[],
+  filters: FilterState
+): PromoAnalysis {
+  const filteredData = filterData(data, filters);
+  return calculatePromoAnalysis(filteredData);
+}
+
+/**
+ * Generate promo analysis grouped by competitor
+ */
+export function generatePromoAnalysisByCompetitor(
+  data: PricingDataRow[],
+  filters: FilterState
+): PromoAnalysisByCompetitor[] {
+  const filteredData = filterData(data, filters);
+
+  // Group by competidor
+  const groups: Map<string, PricingDataRow[]> = new Map();
+  filteredData.forEach((row) => {
+    const key = row.competidor;
+    if (!groups.has(key)) {
+      groups.set(key, []);
+    }
+    groups.get(key)!.push(row);
+  });
+
+  const results: PromoAnalysisByCompetitor[] = [];
+
+  groups.forEach((rows, competidor) => {
+    results.push({
+      competidor,
+      analysis: calculatePromoAnalysis(rows),
+    });
+  });
+
+  return results.sort((a, b) => a.competidor.localeCompare(b.competidor));
 }

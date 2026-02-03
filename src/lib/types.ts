@@ -52,3 +52,27 @@ export interface BoxplotComparison {
   promo: BoxplotStats;
   percentageDiff: number;
 }
+
+/**
+ * Promo analysis statistics
+ */
+export interface PromoAnalysis {
+  // Average promo amount (excluding no-promo)
+  avgPromoAmount: number;
+  // Average recurring promo percentage (excluding no-promo)
+  avgRecurringPromoPercent: number;
+  // Average alta promo percentage (excluding no-promo)
+  avgAltaPromoPercent: number;
+  // Counts for pie chart
+  withPromoCount: number;
+  withoutPromoCount: number;
+  totalCount: number;
+}
+
+/**
+ * Promo analysis by competitor
+ */
+export interface PromoAnalysisByCompetitor {
+  competidor: string;
+  analysis: PromoAnalysis;
+}
