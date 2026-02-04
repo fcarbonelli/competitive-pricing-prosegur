@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { BoxplotComparison } from "@/lib/types";
+import { BoxplotComparison, CurrencyMode } from "@/lib/types";
 import { getCompetitorConfig } from "@/lib/constants";
 
 // Dynamically import Plotly to avoid SSR issues
@@ -12,6 +12,7 @@ interface BoxplotChartProps {
   comparisons: BoxplotComparison[];
   baseLabel?: string;
   promoLabel?: string;
+  currency?: CurrencyMode;
 }
 
 /**
@@ -63,6 +64,7 @@ export function BoxplotChart({
   comparisons,
   baseLabel = "BASE",
   promoLabel = "PROMO",
+  currency = "EUR",
 }: BoxplotChartProps) {
   if (comparisons.length === 0) {
     return (
@@ -140,9 +142,9 @@ export function BoxplotChart({
     boxgroupgap: 0.15,
     margin: { t: 60, b: 80, l: 80, r: 40 },
     yaxis: {
-      title: "Precio (EUR)",
+      title: currency === "EUR" ? "Precio (EUR)" : "Precio (Moneda Local)",
       tickformat: ",.0f",
-      tickprefix: "€",
+      tickprefix: currency === "EUR" ? "€" : "",
       gridcolor: "rgba(148, 163, 184, 0.3)",
       zerolinecolor: "rgba(148, 163, 184, 0.5)",
       titlefont: { size: 12, color: "#64748b" },

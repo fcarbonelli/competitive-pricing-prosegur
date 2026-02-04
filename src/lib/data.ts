@@ -1,4 +1,4 @@
-import { PricingDataRow, FilterState, BoxplotStats, BoxplotComparison, PromoAnalysis, PromoAnalysisByCompetitor } from "./types";
+import { PricingDataRow, FilterState, BoxplotStats, BoxplotComparison, PromoAnalysis, PromoAnalysisByCompetitor, CurrencyMode } from "./types";
 
 // Import the JSON data directly
 import rawData from "@/data/pricing-data.json";
@@ -52,11 +52,20 @@ function normalizeSegment(segment: string): string {
 
 /**
  * Parse raw JSON data into typed PricingDataRow array
- * All prices are converted to EUR using exchange rates
+ * Stores both local currency and EUR converted values
  */
 export function parseData(): PricingDataRow[] {
   return (rawData as Record<string, unknown>[]).map((row) => {
     const pais = normalizeCountry(row["País"] as string);
+
+    // Get raw local currency values
+    const precioRecurrenteBaseLocal = row["PRECIO RECURRENTE - BASE "] as number;
+    const precioRecurrentePromocionalLocal = row["PRECIO RECURRENTE - PROMOCIONAL"] as number;
+    const montoPromoLocal = row["MONTO DE LA PROMO"] as number | null;
+    const precioRecurrenteEfectivoLocal = row["PRECIO RECURRENTE - EFECTIVO"] as number;
+    const precioAltaBaseLocal = row["PRECIO ALTA - BASE"] as number;
+    const precioAltaPromocionalLocal = row["PRECIO ALTA - PROMOCIONAL"] as number;
+    const precioAltaEfectivoLocal = row["PRECIO DE ALTA - EFECTIVO"] as number;
 
     return {
       id: row["ID "] as number,
@@ -64,16 +73,25 @@ export function parseData(): PricingDataRow[] {
       competidor: row["Competidor"] as string,
       segmento: normalizeSegment(row["Segmento"] as string),
       tamanoKit: (row["Tamaño del Kit"] as string | null) || null,
-      // Convert all prices to EUR
-      precioRecurrenteBase: convertToEUR(row["PRECIO RECURRENTE - BASE "] as number, pais),
-      precioRecurrentePromocional: convertToEUR(row["PRECIO RECURRENTE - PROMOCIONAL"] as number, pais),
-      montoPromo: row["MONTO DE LA PROMO"] ? convertToEUR(row["MONTO DE LA PROMO"] as number, pais) : null,
+      // EUR converted prices
+      precioRecurrenteBase: convertToEUR(precioRecurrenteBaseLocal, pais),
+      precioRecurrentePromocional: convertToEUR(precioRecurrentePromocionalLocal, pais),
+      montoPromo: montoPromoLocal ? convertToEUR(montoPromoLocal, pais) : null,
+      precioRecurrenteEfectivo: convertToEUR(precioRecurrenteEfectivoLocal, pais),
+      precioAltaBase: convertToEUR(precioAltaBaseLocal, pais),
+      precioAltaPromocional: convertToEUR(precioAltaPromocionalLocal, pais),
+      precioAltaEfectivo: convertToEUR(precioAltaEfectivoLocal, pais),
+      // Local currency prices (original values)
+      precioRecurrenteBaseLocal,
+      precioRecurrentePromocionalLocal,
+      montoPromoLocal,
+      precioRecurrenteEfectivoLocal,
+      precioAltaBaseLocal,
+      precioAltaPromocionalLocal,
+      precioAltaEfectivoLocal,
+      // Percentages and other fields
       porcentajePromocionRecurrente: row["PORCENTAJE DE PROMOCION RECURRENTE"] as number | null,
-      precioRecurrenteEfectivo: convertToEUR(row["PRECIO RECURRENTE - EFECTIVO"] as number, pais),
-      precioAltaBase: convertToEUR(row["PRECIO ALTA - BASE"] as number, pais),
-      precioAltaPromocional: convertToEUR(row["PRECIO ALTA - PROMOCIONAL"] as number, pais),
       porcentajePromocionAlta: row["PORCENTAJE DE PROMOCION DE ALTA"] as number | null,
-      precioAltaEfectivo: convertToEUR(row["PRECIO DE ALTA - EFECTIVO"] as number, pais),
       presenciaPromociones: row["PRESENCIA DE PROMOCIONES "] as string,
       duracionPromos: row["Duración promos"] as string,
     };
@@ -146,13 +164,33 @@ function calculatePercentageDiff(baseMean: number, promoMean: number): number {
 export function generateBoxplotComparisons(
   data: PricingDataRow[],
   filters: FilterState,
-  priceType: "recurrente" | "alta"
+  priceType: "recurrente" | "alta",
+  currency: CurrencyMode = "EUR"
 ): BoxplotComparison[] {
   const filteredData = filterData(data, filters);
 
   if (filteredData.length === 0) {
     return [];
   }
+
+  // Helper to get price based on currency mode
+  const getPrice = (row: PricingDataRow, field: "recurrenteBase" | "recurrentePromo" | "altaBase" | "altaPromo"): number => {
+    if (currency === "EUR") {
+      switch (field) {
+        case "recurrenteBase": return row.precioRecurrenteBase;
+        case "recurrentePromo": return row.precioRecurrentePromocional;
+        case "altaBase": return row.precioAltaBase;
+        case "altaPromo": return row.precioAltaPromocional;
+      }
+    } else {
+      switch (field) {
+        case "recurrenteBase": return row.precioRecurrenteBaseLocal;
+        case "recurrentePromo": return row.precioRecurrentePromocionalLocal;
+        case "altaBase": return row.precioAltaBaseLocal;
+        case "altaPromo": return row.precioAltaPromocionalLocal;
+      }
+    }
+  };
 
   // If a country is selected, group by competidor
   // Otherwise, show all data as a single group
@@ -161,13 +199,13 @@ export function generateBoxplotComparisons(
   if (groupBy === "all") {
     const baseValues =
       priceType === "recurrente"
-        ? filteredData.map((d) => d.precioRecurrenteBase)
-        : filteredData.map((d) => d.precioAltaBase);
+        ? filteredData.map((d) => getPrice(d, "recurrenteBase"))
+        : filteredData.map((d) => getPrice(d, "altaBase"));
 
     const promoValues =
       priceType === "recurrente"
-        ? filteredData.map((d) => d.precioRecurrentePromocional)
-        : filteredData.map((d) => d.precioAltaPromocional);
+        ? filteredData.map((d) => getPrice(d, "recurrentePromo"))
+        : filteredData.map((d) => getPrice(d, "altaPromo"));
 
     // Filter out zero values for alta prices (many are 0)
     const filteredBaseValues = priceType === "alta"
@@ -207,13 +245,13 @@ export function generateBoxplotComparisons(
   groups.forEach((rows, competidor) => {
     const baseValues =
       priceType === "recurrente"
-        ? rows.map((d) => d.precioRecurrenteBase)
-        : rows.map((d) => d.precioAltaBase);
+        ? rows.map((d) => getPrice(d, "recurrenteBase"))
+        : rows.map((d) => getPrice(d, "altaBase"));
 
     const promoValues =
       priceType === "recurrente"
-        ? rows.map((d) => d.precioRecurrentePromocional)
-        : rows.map((d) => d.precioAltaPromocional);
+        ? rows.map((d) => getPrice(d, "recurrentePromo"))
+        : rows.map((d) => getPrice(d, "altaPromo"));
 
     // Filter out zero values for alta prices
     const filteredBaseValues = priceType === "alta"

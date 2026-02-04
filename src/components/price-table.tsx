@@ -1,24 +1,34 @@
 "use client";
 
-import { PricingDataRow } from "@/lib/types";
+import { PricingDataRow, CurrencyMode } from "@/lib/types";
 
 interface PriceTableProps {
   data: PricingDataRow[];
   title: string;
   priceType: "recurrente" | "alta";
+  currency: CurrencyMode;
 }
 
 /**
- * Format number as EUR currency
+ * Format number as currency (EUR or local)
  */
-function formatEUR(value: number): string {
+function formatCurrency(value: number, currency: CurrencyMode): string {
   if (value === 0 || isNaN(value)) return "-";
-  return new Intl.NumberFormat("es-ES", {
-    style: "currency",
-    currency: "EUR",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(value);
+
+  if (currency === "EUR") {
+    return new Intl.NumberFormat("es-ES", {
+      style: "currency",
+      currency: "EUR",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value);
+  } else {
+    // Local currency - just format as number
+    return new Intl.NumberFormat("es-ES", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value);
+  }
 }
 
 /**
@@ -52,7 +62,7 @@ function normalizeKitSize(kitSize: string | null): string {
 /**
  * Simple price table showing averages by kit type
  */
-export function PriceTable({ data, title, priceType }: PriceTableProps) {
+export function PriceTable({ data, title, priceType, currency }: PriceTableProps) {
   // Group data by normalized kit size
   const kitGroups: Record<string, PricingDataRow[]> = {};
 
@@ -64,15 +74,34 @@ export function PriceTable({ data, title, priceType }: PriceTableProps) {
     kitGroups[kitKey].push(row);
   });
 
+  // Helper to get correct price based on currency mode
+  const getPrice = (row: PricingDataRow, field: "recurrenteBase" | "recurrentePromo" | "altaBase" | "altaPromo"): number => {
+    if (currency === "EUR") {
+      switch (field) {
+        case "recurrenteBase": return row.precioRecurrenteBase;
+        case "recurrentePromo": return row.precioRecurrentePromocional;
+        case "altaBase": return row.precioAltaBase;
+        case "altaPromo": return row.precioAltaPromocional;
+      }
+    } else {
+      switch (field) {
+        case "recurrenteBase": return row.precioRecurrenteBaseLocal;
+        case "recurrentePromo": return row.precioRecurrentePromocionalLocal;
+        case "altaBase": return row.precioAltaBaseLocal;
+        case "altaPromo": return row.precioAltaPromocionalLocal;
+      }
+    }
+  };
+
   // Calculate averages for each kit type
   const tableData = Object.entries(kitGroups).map(([kitType, rows]) => {
     const baseValues = priceType === "recurrente"
-      ? rows.map((r) => r.precioRecurrenteBase)
-      : rows.map((r) => r.precioAltaBase);
+      ? rows.map((r) => getPrice(r, "recurrenteBase"))
+      : rows.map((r) => getPrice(r, "altaBase"));
 
     const promoValues = priceType === "recurrente"
-      ? rows.map((r) => r.precioRecurrentePromocional)
-      : rows.map((r) => r.precioAltaPromocional);
+      ? rows.map((r) => getPrice(r, "recurrentePromo"))
+      : rows.map((r) => getPrice(r, "altaPromo"));
 
     return {
       kitType,
@@ -95,12 +124,12 @@ export function PriceTable({ data, title, priceType }: PriceTableProps) {
 
   // Calculate totals
   const allBaseValues = priceType === "recurrente"
-    ? data.map((r) => r.precioRecurrenteBase)
-    : data.map((r) => r.precioAltaBase);
+    ? data.map((r) => getPrice(r, "recurrenteBase"))
+    : data.map((r) => getPrice(r, "altaBase"));
 
   const allPromoValues = priceType === "recurrente"
-    ? data.map((r) => r.precioRecurrentePromocional)
-    : data.map((r) => r.precioAltaPromocional);
+    ? data.map((r) => getPrice(r, "recurrentePromo"))
+    : data.map((r) => getPrice(r, "altaPromo"));
 
   const totalAvgBase = calculateAverage(allBaseValues);
   const totalAvgPromo = calculateAverage(allPromoValues);
@@ -136,10 +165,10 @@ export function PriceTable({ data, title, priceType }: PriceTableProps) {
                   <span className="text-xs text-slate-400 ml-2">({row.count})</span>
                 </td>
                 <td className="px-4 py-3 text-right font-medium text-slate-800 border-b border-slate-100">
-                  {formatEUR(row.avgBase)}
+                  {formatCurrency(row.avgBase, currency)}
                 </td>
                 <td className="px-4 py-3 text-right font-medium text-emerald-600 border-b border-slate-100">
-                  {formatEUR(row.avgPromo)}
+                  {formatCurrency(row.avgPromo, currency)}
                 </td>
               </tr>
             ))}
@@ -150,10 +179,10 @@ export function PriceTable({ data, title, priceType }: PriceTableProps) {
                 <span className="text-xs text-slate-400 ml-2">({data.length})</span>
               </td>
               <td className="px-4 py-3 text-right text-slate-800">
-                {formatEUR(totalAvgBase)}
+                {formatCurrency(totalAvgBase, currency)}
               </td>
               <td className="px-4 py-3 text-right text-emerald-600">
-                {formatEUR(totalAvgPromo)}
+                {formatCurrency(totalAvgPromo, currency)}
               </td>
             </tr>
           </tbody>

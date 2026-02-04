@@ -1,5 +1,11 @@
 /**
+ * Currency type for display
+ */
+export type CurrencyMode = "EUR" | "LOCAL";
+
+/**
  * Raw data row from the Excel file
+ * Contains both local currency and EUR converted values
  */
 export interface PricingDataRow {
   id: number;
@@ -7,15 +13,25 @@ export interface PricingDataRow {
   competidor: string;
   segmento: string;
   tamanoKit: string | null;
+  // EUR converted prices
   precioRecurrenteBase: number;
   precioRecurrentePromocional: number;
   montoPromo: number | null;
-  porcentajePromocionRecurrente: number | null;
   precioRecurrenteEfectivo: number;
   precioAltaBase: number;
   precioAltaPromocional: number;
-  porcentajePromocionAlta: number | null;
   precioAltaEfectivo: number;
+  // Local currency prices (original values)
+  precioRecurrenteBaseLocal: number;
+  precioRecurrentePromocionalLocal: number;
+  montoPromoLocal: number | null;
+  precioRecurrenteEfectivoLocal: number;
+  precioAltaBaseLocal: number;
+  precioAltaPromocionalLocal: number;
+  precioAltaEfectivoLocal: number;
+  // Percentages and other fields
+  porcentajePromocionRecurrente: number | null;
+  porcentajePromocionAlta: number | null;
   presenciaPromociones: string;
   duracionPromos: string;
 }

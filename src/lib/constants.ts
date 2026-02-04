@@ -37,6 +37,11 @@ export const COMPETITOR_CONFIG: Record<string, { color: string; colorLight: stri
     colorLight: "rgba(124, 58, 237, 0.6)",
     logo: "/logos/maxima-seguridad.png",
   },
+  "Maxima": {
+    color: "#7C3AED",        // Purple (same as Maxima Seguridad)
+    colorLight: "rgba(124, 58, 237, 0.6)",
+    logo: "/logos/maxima-seguridad.png",
+  },
   "Securitas": {
     color: "#DC2626",        // Red
     colorLight: "rgba(220, 38, 38, 0.6)",
