@@ -27,6 +27,7 @@ declare namespace Plotly {
       color?: string;
       colors?: string[];
       size?: number;
+      outliercolor?: string;
     };
     fillcolor?: string;
     line?: {
@@ -86,6 +87,7 @@ declare namespace Plotly {
       zerolinecolor?: string;
       titlefont?: Font;
       tickfont?: Font;
+      range?: [number, number];
     };
     annotations?: Partial<Annotations>[];
     paper_bgcolor?: string;

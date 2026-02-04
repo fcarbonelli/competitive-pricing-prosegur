@@ -80,6 +80,44 @@ export function BoxplotChart({
   // Get list of competitors for legend
   const competitors = comparisons.map((c) => c.label);
 
+  // Calculate Y-axis range focused on boxplot whiskers (IQR-based)
+  // Outliers will be shown but won't dominate the scale
+  const calculateAxisRange = (): [number, number] => {
+    let minWhisker = Infinity;
+    let maxWhisker = -Infinity;
+
+    comparisons.forEach((comp) => {
+      [comp.base, comp.promo].forEach((stats) => {
+        if (stats.values.length === 0) return;
+
+        const iqr = stats.q3 - stats.q1;
+        // Standard boxplot whiskers: Q1 - 1.5*IQR and Q3 + 1.5*IQR
+        const lowerBound = stats.q1 - 1.5 * iqr;
+        const upperBound = stats.q3 + 1.5 * iqr;
+
+        // Whisker ends at the furthest data point within bounds
+        const lowerWhisker = Math.max(stats.min, lowerBound);
+        const upperWhisker = Math.min(stats.max, upperBound);
+
+        minWhisker = Math.min(minWhisker, lowerWhisker);
+        maxWhisker = Math.max(maxWhisker, upperWhisker);
+      });
+    });
+
+    if (minWhisker === Infinity) return [0, 100];
+
+    // Add 20% padding to whisker range for outlier dots
+    const whiskerRange = maxWhisker - minWhisker;
+    const padding = whiskerRange * 0.2;
+
+    return [
+      Math.max(0, minWhisker - padding),
+      maxWhisker + padding
+    ];
+  };
+
+  const yAxisRange = calculateAxisRange();
+
   // Prepare data for Plotly
   const traces: Plotly.Data[] = [];
 
@@ -98,8 +136,12 @@ export function BoxplotChart({
       y: comp.base.values,
       name: `${comp.label} - ${baseLabel}`,
       x: Array(comp.base.values.length).fill(`${comp.label}`),
-      boxpoints: false,
-      marker: { color: baseLine },
+      boxpoints: "outliers",  // Show outliers as dots outside whiskers
+      marker: {
+        color: baseLine,
+        outliercolor: baseLine,
+        size: 6,
+      },
       fillcolor: baseColor,
       line: { color: baseLine, width: 2 },
       offsetgroup: `${index}-base`,
@@ -113,8 +155,12 @@ export function BoxplotChart({
       y: comp.promo.values,
       name: `${comp.label} - ${promoLabel}`,
       x: Array(comp.promo.values.length).fill(`${comp.label}`),
-      boxpoints: false,
-      marker: { color: promoLine },
+      boxpoints: "outliers",  // Show outliers as dots outside whiskers
+      marker: {
+        color: promoLine,
+        outliercolor: promoLine,
+        size: 6,
+      },
       fillcolor: promoColor,
       line: { color: promoLine, width: 2, dash: "dot" },
       offsetgroup: `${index}-promo`,
@@ -149,6 +195,7 @@ export function BoxplotChart({
       zerolinecolor: "rgba(148, 163, 184, 0.5)",
       titlefont: { size: 12, color: "#64748b" },
       tickfont: { size: 11, color: "#64748b" },
+      range: yAxisRange,  // Smart range that focuses on main data, not outliers
     },
     xaxis: {
       title: "",
