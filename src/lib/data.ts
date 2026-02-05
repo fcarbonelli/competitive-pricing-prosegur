@@ -48,10 +48,40 @@ function convertToEUR(price: number, country: string): number {
 }
 
 /**
- * Normalize country names (handle variations like "PARAGUAY\n")
+ * Map country codes to full names
  */
-function normalizeCountry(country: string): string {
-  return country.trim().toUpperCase();
+const COUNTRY_NAMES: Record<string, string> = {
+  "ARG": "Argentina",
+  "AR": "Argentina",
+  "ARGENTINA": "Argentina",
+  "COL": "Colombia",
+  "CO": "Colombia",
+  "COLOMBIA": "Colombia",
+  "PER": "Perú",
+  "PE": "Perú",
+  "PERU": "Perú",
+  "URU": "Uruguay",
+  "UY": "Uruguay",
+  "URUGUAY": "Uruguay",
+  "PAR": "Paraguay",
+  "PY": "Paraguay",
+  "PARAGUAY": "Paraguay",
+  "CHL": "Chile",
+  "CHI": "Chile",
+  "CH": "Chile",
+  "CHILE": "Chile",
+  "POR": "Portugal",
+  "PT": "Portugal",
+  "PORTUGAL": "Portugal",
+};
+
+/**
+ * Normalize country names - converts codes to full names
+ */
+function normalizeCountry(country: string | null | undefined): string {
+  if (!country) return "Desconocido";
+  const cleaned = country.trim().toUpperCase();
+  return COUNTRY_NAMES[cleaned] || cleaned;
 }
 
 /**

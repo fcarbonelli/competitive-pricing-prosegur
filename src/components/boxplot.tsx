@@ -136,7 +136,8 @@ export function BoxplotChart({
       y: comp.base.values,
       name: `${comp.label} - ${baseLabel}`,
       x: Array(comp.base.values.length).fill(`${comp.label}`),
-      boxpoints: "outliers",  // Show outliers as dots outside whiskers
+      boxpoints: "outliers",
+      boxmean: true,
       marker: {
         color: baseLine,
         outliercolor: baseLine,
@@ -155,7 +156,8 @@ export function BoxplotChart({
       y: comp.promo.values,
       name: `${comp.label} - ${promoLabel}`,
       x: Array(comp.promo.values.length).fill(`${comp.label}`),
-      boxpoints: "outliers",  // Show outliers as dots outside whiskers
+      boxpoints: "outliers",
+      boxmean: true,
       marker: {
         color: promoLine,
         outliercolor: promoLine,
@@ -216,6 +218,10 @@ export function BoxplotChart({
     displayModeBar: false,
   };
 
+  // Dynamic height based on number of comparisons
+  // More competitors = taller chart to keep boxes readable
+  const chartHeight = Math.max(420, comparisons.length * 100);
+
   return (
     <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
       <CompetitorLegend competitors={competitors} />
@@ -223,7 +229,7 @@ export function BoxplotChart({
         data={traces}
         layout={layout}
         config={config}
-        style={{ width: "100%", height: "420px" }}
+        style={{ width: "100%", height: `${chartHeight}px` }}
       />
     </div>
   );

@@ -236,6 +236,7 @@ export default function Dashboard() {
                   title="Precio Promedio Recurrente por Tipo de Kit"
                   priceType="recurrente"
                   currency={currency}
+                  comparisons={recurrenteComparisons}
                 />
               </div>
             </section>
@@ -263,6 +264,7 @@ export default function Dashboard() {
                   title="Precio Promedio de Alta por Tipo de Kit"
                   priceType="alta"
                   currency={currency}
+                  comparisons={altaComparisons}
                 />
               </div>
             </section>

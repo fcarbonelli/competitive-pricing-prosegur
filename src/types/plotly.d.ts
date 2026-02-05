@@ -36,6 +36,10 @@ declare namespace Plotly {
       dash?: string;
     };
     boxpoints?: boolean | string;
+    boxmean?: boolean | "sd";
+    hovertemplate?: string;
+    hoverinfo?: string;
+    hovertext?: string;
     offsetgroup?: string;
     legendgroup?: string;
     showlegend?: boolean;

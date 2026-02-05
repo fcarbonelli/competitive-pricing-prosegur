@@ -1,12 +1,15 @@
 "use client";
 
-import { PricingDataRow, CurrencyMode } from "@/lib/types";
+import React from "react";
+import { PricingDataRow, CurrencyMode, BoxplotComparison } from "@/lib/types";
+import { getCompetitorConfig } from "@/lib/constants";
 
 interface PriceTableProps {
   data: PricingDataRow[];
   title: string;
   priceType: "recurrente" | "alta";
   currency: CurrencyMode;
+  comparisons: BoxplotComparison[];  // To know which competitors to show columns for
 }
 
 /**
@@ -60,19 +63,12 @@ function normalizeKitSize(kitSize: string | null): string {
 }
 
 /**
- * Simple price table showing averages by kit type
+ * Price table showing averages by kit type, with columns per competitor
  */
-export function PriceTable({ data, title, priceType, currency }: PriceTableProps) {
-  // Group data by normalized kit size
-  const kitGroups: Record<string, PricingDataRow[]> = {};
-
-  data.forEach((row) => {
-    const kitKey = normalizeKitSize(row.tamanoKit);
-    if (!kitGroups[kitKey]) {
-      kitGroups[kitKey] = [];
-    }
-    kitGroups[kitKey].push(row);
-  });
+export function PriceTable({ data, title, priceType, currency, comparisons }: PriceTableProps) {
+  // Get competitors from comparisons (this matches what's shown in the boxplot)
+  const competitors = comparisons.map((c) => c.label);
+  const isSingleGroup = competitors.length === 1 && competitors[0] === "Todos";
 
   // Helper to get correct price based on currency mode
   const getPrice = (row: PricingDataRow, field: "recurrenteBase" | "recurrentePromo" | "altaBase" | "altaPromo"): number => {
@@ -93,46 +89,64 @@ export function PriceTable({ data, title, priceType, currency }: PriceTableProps
     }
   };
 
-  // Calculate averages for each kit type
-  const tableData = Object.entries(kitGroups).map(([kitType, rows]) => {
-    const baseValues = priceType === "recurrente"
-      ? rows.map((r) => getPrice(r, "recurrenteBase"))
-      : rows.map((r) => getPrice(r, "altaBase"));
+  // Group data by kit type AND competitor
+  const kitTypes = ["Kit Estándar", "Kit Avanzado", "Sin especificar"];
 
-    const promoValues = priceType === "recurrente"
-      ? rows.map((r) => getPrice(r, "recurrentePromo"))
-      : rows.map((r) => getPrice(r, "altaPromo"));
+  // Build table data: for each kit type, calculate avg per competitor
+  const tableData = kitTypes.map((kitType) => {
+    const kitRows = data.filter((row) => normalizeKitSize(row.tamanoKit) === kitType);
+
+    const competitorData: Record<string, { avgBase: number; avgPromo: number; count: number }> = {};
+
+    competitors.forEach((comp) => {
+      // Filter rows for this competitor (or all if "Todos")
+      const compRows = comp === "Todos"
+        ? kitRows
+        : kitRows.filter((row) => row.competidor === comp);
+
+      const baseValues = priceType === "recurrente"
+        ? compRows.map((r) => getPrice(r, "recurrenteBase"))
+        : compRows.map((r) => getPrice(r, "altaBase"));
+
+      const promoValues = priceType === "recurrente"
+        ? compRows.map((r) => getPrice(r, "recurrentePromo"))
+        : compRows.map((r) => getPrice(r, "altaPromo"));
+
+      competitorData[comp] = {
+        avgBase: calculateAverage(baseValues),
+        avgPromo: calculateAverage(promoValues),
+        count: compRows.length,
+      };
+    });
 
     return {
       kitType,
+      totalCount: kitRows.length,
+      competitors: competitorData,
+    };
+  }).filter((row) => row.totalCount > 0); // Only show kit types that have data
+
+  // Calculate totals per competitor
+  const totals: Record<string, { avgBase: number; avgPromo: number; count: number }> = {};
+  competitors.forEach((comp) => {
+    const compRows = comp === "Todos"
+      ? data
+      : data.filter((row) => row.competidor === comp);
+
+    const baseValues = priceType === "recurrente"
+      ? compRows.map((r) => getPrice(r, "recurrenteBase"))
+      : compRows.map((r) => getPrice(r, "altaBase"));
+
+    const promoValues = priceType === "recurrente"
+      ? compRows.map((r) => getPrice(r, "recurrentePromo"))
+      : compRows.map((r) => getPrice(r, "altaPromo"));
+
+    totals[comp] = {
       avgBase: calculateAverage(baseValues),
       avgPromo: calculateAverage(promoValues),
-      count: rows.length,
+      count: compRows.length,
     };
   });
-
-  // Sort to show Kit Estándar first, then Kit Avanzado, then others
-  const sortOrder = ["Kit Estándar", "Kit Avanzado", "Sin especificar"];
-  tableData.sort((a, b) => {
-    const aIndex = sortOrder.indexOf(a.kitType);
-    const bIndex = sortOrder.indexOf(b.kitType);
-    if (aIndex === -1 && bIndex === -1) return a.kitType.localeCompare(b.kitType);
-    if (aIndex === -1) return 1;
-    if (bIndex === -1) return -1;
-    return aIndex - bIndex;
-  });
-
-  // Calculate totals
-  const allBaseValues = priceType === "recurrente"
-    ? data.map((r) => getPrice(r, "recurrenteBase"))
-    : data.map((r) => getPrice(r, "altaBase"));
-
-  const allPromoValues = priceType === "recurrente"
-    ? data.map((r) => getPrice(r, "recurrentePromo"))
-    : data.map((r) => getPrice(r, "altaPromo"));
-
-  const totalAvgBase = calculateAverage(allBaseValues);
-  const totalAvgPromo = calculateAverage(allPromoValues);
 
   return (
     <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
@@ -142,16 +156,45 @@ export function PriceTable({ data, title, priceType, currency }: PriceTableProps
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
+            {/* Header row with competitor names */}
             <tr className="bg-slate-50">
-              <th className="px-4 py-3 text-left font-semibold text-slate-600 border-b border-slate-200">
+              <th className="px-4 py-2 text-left font-semibold text-slate-600 border-b border-slate-200" rowSpan={2}>
                 Tipo de Kit
               </th>
-              <th className="px-4 py-3 text-right font-semibold text-slate-600 border-b border-slate-200">
-                Valor promedio BASE
-              </th>
-              <th className="px-4 py-3 text-right font-semibold text-slate-600 border-b border-slate-200">
-                Valor promedio PROMO
-              </th>
+              {competitors.map((comp) => {
+                const config = getCompetitorConfig(comp);
+                return (
+                  <th
+                    key={comp}
+                    colSpan={2}
+                    className="px-2 py-2 text-center font-semibold text-slate-700 border-b border-slate-200"
+                  >
+                    <div className="flex items-center justify-center gap-2">
+                      {!isSingleGroup && (
+                        <img
+                          src={config.logo}
+                          alt={comp}
+                          className="w-5 h-5 object-contain"
+                        />
+                      )}
+                      <span>{comp}</span>
+                    </div>
+                  </th>
+                );
+              })}
+            </tr>
+            {/* Sub-header row with BASE/PROMO */}
+            <tr className="bg-slate-100/50">
+              {competitors.map((comp) => (
+                <React.Fragment key={`${comp}-headers`}>
+                  <th className="px-3 py-2 text-right text-xs font-medium text-slate-500 border-b border-slate-200">
+                    BASE
+                  </th>
+                  <th className="px-3 py-2 text-right text-xs font-medium text-emerald-600 border-b border-slate-200">
+                    PROMO
+                  </th>
+                </React.Fragment>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -160,30 +203,42 @@ export function PriceTable({ data, title, priceType, currency }: PriceTableProps
                 key={row.kitType}
                 className={index % 2 === 0 ? "bg-white" : "bg-slate-50/50"}
               >
-                <td className="px-4 py-3 text-slate-700 border-b border-slate-100">
+                <td className="px-4 py-3 text-slate-700 border-b border-slate-100 font-medium">
                   {row.kitType}
-                  <span className="text-xs text-slate-400 ml-2">({row.count})</span>
                 </td>
-                <td className="px-4 py-3 text-right font-medium text-slate-800 border-b border-slate-100">
-                  {formatCurrency(row.avgBase, currency)}
-                </td>
-                <td className="px-4 py-3 text-right font-medium text-emerald-600 border-b border-slate-100">
-                  {formatCurrency(row.avgPromo, currency)}
-                </td>
+                {competitors.map((comp) => {
+                  const compData = row.competitors[comp];
+                  return (
+                    <React.Fragment key={`${row.kitType}-${comp}`}>
+                      <td className="px-3 py-3 text-right text-slate-800 border-b border-slate-100">
+                        {formatCurrency(compData?.avgBase || 0, currency)}
+                      </td>
+                      <td className="px-3 py-3 text-right text-emerald-600 border-b border-slate-100">
+                        {formatCurrency(compData?.avgPromo || 0, currency)}
+                      </td>
+                    </React.Fragment>
+                  );
+                })}
               </tr>
             ))}
             {/* Total row */}
             <tr className="bg-slate-100 font-semibold">
               <td className="px-4 py-3 text-slate-700">
                 Total
-                <span className="text-xs text-slate-400 ml-2">({data.length})</span>
               </td>
-              <td className="px-4 py-3 text-right text-slate-800">
-                {formatCurrency(totalAvgBase, currency)}
-              </td>
-              <td className="px-4 py-3 text-right text-emerald-600">
-                {formatCurrency(totalAvgPromo, currency)}
-              </td>
+              {competitors.map((comp) => {
+                const compTotal = totals[comp];
+                return (
+                  <React.Fragment key={`total-${comp}`}>
+                    <td className="px-3 py-3 text-right text-slate-800">
+                      {formatCurrency(compTotal?.avgBase || 0, currency)}
+                    </td>
+                    <td className="px-3 py-3 text-right text-emerald-600">
+                      {formatCurrency(compTotal?.avgPromo || 0, currency)}
+                    </td>
+                  </React.Fragment>
+                );
+              })}
             </tr>
           </tbody>
         </table>
