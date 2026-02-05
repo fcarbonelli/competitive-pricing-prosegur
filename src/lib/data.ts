@@ -8,20 +8,34 @@ import rawData from "@/data/pricing-data.json";
  * TC / Budget rates from the provided table
  */
 const EXCHANGE_RATES: Record<string, number> = {
-  "ARG": 1676,      // Argentine Peso to EUR
-  "AR": 1676,       // Alternative code
+  // Argentina
+  "ARG": 1676,
+  "AR": 1676,
   "ARGENTINA": 1676,
-  "CO": 4900,       // Colombian Peso to EUR
+  // Colombia
+  "CO": 4900,
+  "COL": 4900,
   "COLOMBIA": 4900,
-  "PE": 4.24,       // Peruvian Sol to EUR
+  // Peru
+  "PE": 4.24,
+  "PER": 4.24,
   "PERU": 4.24,
-  "UY": 49.5,       // Uruguayan Peso to EUR
+  // Uruguay
+  "UY": 49.5,
+  "URU": 49.5,
   "URUGUAY": 49.5,
-  "PY": 9268,       // Paraguayan Guarani to EUR
+  // Paraguay
+  "PY": 9268,
+  "PAR": 9268,
   "PARAGUAY": 9268,
-  "CH": 1081,       // Chilean Peso to EUR
+  // Chile
+  "CH": 1081,
+  "CHL": 1081,
+  "CHI": 1081,
   "CHILE": 1081,
-  "PT": 1,          // Portugal (already EUR)
+  // Portugal
+  "PT": 1,
+  "POR": 1,
   "PORTUGAL": 1,
 };
 
