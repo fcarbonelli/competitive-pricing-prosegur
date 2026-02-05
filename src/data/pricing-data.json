@@ -97,7 +97,7 @@
   },
   {
     "ID ":4.0,
-    "País":"Chile",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -145,7 +145,7 @@
   },
   {
     "ID ":6.0,
-    "País":"Chile",
+    "País":"Argentina",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -193,7 +193,7 @@
   },
   {
     "ID ":7.0,
-    "País":"PERU",
+    "País":"Argentina",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -241,7 +241,7 @@
   },
   {
     "ID ":9.0,
-    "País":"PERU",
+    "País":"Argentina",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -289,7 +289,7 @@
   },
   {
     "ID ":10.0,
-    "País":"Chile",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -337,7 +337,7 @@
   },
   {
     "ID ":24.0,
-    "País":"PERU",
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -385,7 +385,7 @@
   },
   {
     "ID ":25.0,
-    "País":"PERU",
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -433,7 +433,7 @@
   },
   {
     "ID ":28.0,
-    "País":"PERU",
+    "País":"Chile",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -481,7 +481,7 @@
   },
   {
     "ID ":29.0,
-    "País":"Argentina",
+    "País":"Chile",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -577,7 +577,7 @@
   },
   {
     "ID ":38.0,
-    "País":"Argentina",
+    "País":"Chile",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -673,7 +673,7 @@
   },
   {
     "ID ":4.0,
-    "País":"Uruguay",
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -721,7 +721,7 @@
   },
   {
     "ID ":5.0,
-    "País":"Uruguay",
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -769,7 +769,7 @@
   },
   {
     "ID ":1.0,
-    "País":"PERU",
+    "País":"Colombia",
     "Competidor":"Atlas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -865,7 +865,7 @@
   },
   {
     "ID ":2.0,
-    "País":"PARAGUAY",
+    "País":"Colombia",
     "Competidor":"Atlas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -913,7 +913,7 @@
   },
   {
     "ID ":2.0,
-    "País":"Uruguay",
+    "País":"Colombia",
     "Competidor":"Atlas",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -1009,7 +1009,7 @@
   },
   {
     "ID ":2.0,
-    "País":"PERU",
+    "País":"Colombia",
     "Competidor":"Atlas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -1057,7 +1057,7 @@
   },
   {
     "ID ":null,
-    "País":"PERU",
+    "País":"Chile",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -1153,7 +1153,7 @@
   },
   {
     "ID ":5.0,
-    "País":"Argentina",
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -1201,7 +1201,7 @@
   },
   {
     "ID ":4.0,
-    "País":"Argentina",
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -1249,7 +1249,7 @@
   },
   {
     "ID ":1.0,
-    "País":"Argentina",
+    "País":"Colombia",
     "Competidor":"Atlas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -1297,7 +1297,7 @@
   },
   {
     "ID ":10.0,
-    "País":"Argentina",
+    "País":"Uruguay",
     "Competidor":"Securitas",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -1345,7 +1345,7 @@
   },
   {
     "ID ":32.0,
-    "País":"Argentina",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -1393,7 +1393,7 @@
   },
   {
     "ID ":27.0,
-    "País":"Argentina",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -1489,7 +1489,7 @@
   },
   {
     "ID ":1.0,
-    "País":"PARAGUAY",
+    "País":"Uruguay",
     "Competidor":"Securitas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -1633,7 +1633,7 @@
   },
   {
     "ID ":8.0,
-    "País":"Chile",
+    "País":"Argentina",
     "Competidor":"Verisure",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -1681,7 +1681,7 @@
   },
   {
     "ID ":3.0,
-    "País":"Chile",
+    "País":"Argentina",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -1777,7 +1777,7 @@
   },
   {
     "ID ":52.0,
-    "País":"Chile",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Negocios",
     "Tamaño del Kit":"AVANZADO",
@@ -1825,7 +1825,7 @@
   },
   {
     "ID ":12.0,
-    "País":"Chile",
+    "País":"Uruguay",
     "Competidor":"Securitas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -1873,7 +1873,7 @@
   },
   {
     "ID ":30.0,
-    "País":"Chile",
+    "País":"Uruguay",
     "Competidor":"Securitas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -1921,7 +1921,7 @@
   },
   {
     "ID ":19.0,
-    "País":"COLOMBIA",
+    "País":"Uruguay",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -1969,7 +1969,7 @@
   },
   {
     "ID ":16.0,
-    "País":"COLOMBIA",
+    "País":"Uruguay",
     "Competidor":"Securitas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -2017,7 +2017,7 @@
   },
   {
     "ID ":6.0,
-    "País":"COLOMBIA",
+    "País":"Uruguay",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -2065,7 +2065,7 @@
   },
   {
     "ID ":1.0,
-    "País":"COLOMBIA",
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -2113,7 +2113,7 @@
   },
   {
     "ID ":1.0,
-    "País":"COLOMBIA",
+    "País":"Colombia",
     "Competidor":"Telesentinel",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -2161,7 +2161,7 @@
   },
   {
     "ID ":6.0,
-    "País":"COLOMBIA",
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -2209,7 +2209,7 @@
   },
   {
     "ID ":25.0,
-    "País":"COLOMBIA",
+    "País":"Uruguay",
     "Competidor":"Securitas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -2257,7 +2257,7 @@
   },
   {
     "ID ":4.0,
-    "País":"COLOMBIA",
+    "País":"Colombia",
     "Competidor":"Telesentinel",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -2305,7 +2305,7 @@
   },
   {
     "ID ":61.0,
-    "País":"Argentina",
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -2353,7 +2353,7 @@
   },
   {
     "ID ":62.0,
-    "País":"Uruguay",
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -2401,7 +2401,7 @@
   },
   {
     "ID ":60.0,
-    "País":"Uruguay",
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -2449,7 +2449,7 @@
   },
   {
     "ID ":11.0,
-    "País":"Uruguay",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -2593,7 +2593,7 @@
   },
   {
     "ID ":14.0,
-    "País":"Colombia",
+    "País":"Argentina",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -2641,7 +2641,7 @@
   },
   {
     "ID ":18.0,
-    "País":"Colombia",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -2689,7 +2689,7 @@
   },
   {
     "ID ":22.0,
-    "País":"Colombia",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -2737,7 +2737,7 @@
   },
   {
     "ID ":23.0,
-    "País":"Colombia",
+    "País":"Argentina",
     "Competidor":"Verisure",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -2785,7 +2785,7 @@
   },
   {
     "ID ":26.0,
-    "País":"Colombia",
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -2833,7 +2833,7 @@
   },
   {
     "ID ":40.0,
-    "País":"Colombia",
+    "País":"Chile",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -2929,7 +2929,7 @@
   },
   {
     "ID ":42.0,
-    "País":"Uruguay",
+    "País":"Chile",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -3025,7 +3025,7 @@
   },
   {
     "ID ":45.0,
-    "País":"PERU",
+    "País":"Chile",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -3073,7 +3073,7 @@
   },
   {
     "ID ":46.0,
-    "País":"Colombia",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -3121,7 +3121,7 @@
   },
   {
     "ID ":47.0,
-    "País":"Colombia",
+    "País":"Chile",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -3169,7 +3169,7 @@
   },
   {
     "ID ":48.0,
-    "País":"Colombia",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Negocios",
     "Tamaño del Kit":"AVANZADO",
@@ -3217,7 +3217,7 @@
   },
   {
     "ID ":50.0,
-    "País":"Argentina",
+    "País":"COLOMBIA",
     "Competidor":"Telesentinel",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -3265,7 +3265,7 @@
   },
   {
     "ID ":51.0,
-    "País":"Chile",
+    "País":"COLOMBIA",
     "Competidor":"Telesentinel",
     "Segmento":"Negocios",
     "Tamaño del Kit":"AVANZADO",
@@ -3313,7 +3313,7 @@
   },
   {
     "ID ":52.0,
-    "País":"Chile",
+    "País":"COLOMBIA",
     "Competidor":"Telesentinel",
     "Segmento":"Negocios",
     "Tamaño del Kit":"AVANZADO",
@@ -3361,7 +3361,7 @@
   },
   {
     "ID ":53.0,
-    "País":"Chile",
+    "País":"COLOMBIA",
     "Competidor":"Telesentinel",
     "Segmento":"Negocios",
     "Tamaño del Kit":"AVANZADO",
@@ -3409,7 +3409,7 @@
   },
   {
     "ID ":54.0,
-    "País":"Chile",
+    "País":"COLOMBIA",
     "Competidor":"Telesentinel",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -3457,7 +3457,7 @@
   },
   {
     "ID ":57.0,
-    "País":"Chile",
+    "País":"COLOMBIA",
     "Competidor":"Telesentinel",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -3505,7 +3505,7 @@
   },
   {
     "ID ":58.0,
-    "País":"URUGUAY",
+    "País":"COLOMBIA",
     "Competidor":"Telesentinel",
     "Segmento":"Negocios",
     "Tamaño del Kit":"AVANZADO",
@@ -3553,7 +3553,7 @@
   },
   {
     "ID ":59.0,
-    "País":"Argentina",
+    "País":"COLOMBIA",
     "Competidor":"Telesentinel",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -3649,7 +3649,7 @@
   },
   {
     "ID ":5.0,
-    "País":"Argentina",
+    "País":"Uruguay",
     "Competidor":"Maxima",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -3697,7 +3697,7 @@
   },
   {
     "ID ":34.0,
-    "País":"Chile",
+    "País":"Uruguay",
     "Competidor":"Maxima",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -3745,7 +3745,7 @@
   },
   {
     "ID ":2.0,
-    "País":"Argentina",
+    "País":"Uruguay",
     "Competidor":"Maxima",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -3793,7 +3793,7 @@
   },
   {
     "ID ":null,
-    "País":"Chile",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -3841,7 +3841,7 @@
   },
   {
     "ID ":null,
-    "País":"PERU",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -3889,7 +3889,7 @@
   },
   {
     "ID ":3.0,
-    "País":"Argentina",
+    "País":"Colombia",
     "Competidor":"Telesentinel",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -3985,7 +3985,7 @@
   },
   {
     "ID ":2.0,
-    "País":"Uruguay",
+    "País":"Colombia",
     "Competidor":"Alarmar",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -4033,7 +4033,7 @@
   },
   {
     "ID ":5.0,
-    "País":"Uruguay",
+    "País":"Colombia",
     "Competidor":"Alarmar",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -4081,7 +4081,7 @@
   },
   {
     "ID ":4.0,
-    "País":"Uruguay",
+    "País":"Colombia",
     "Competidor":"Telesentinel",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -4129,7 +4129,7 @@
   },
   {
     "ID ":5.0,
-    "País":"Uruguay",
+    "País":"Colombia",
     "Competidor":"Telesentinel",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -4177,7 +4177,7 @@
   },
   {
     "ID ":17.0,
-    "País":"PARAGUAY",
+    "País":"Chile",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -4273,7 +4273,7 @@
   },
   {
     "ID ":null,
-    "País":"Uruguay",
+    "País":"Chile",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -4321,7 +4321,7 @@
   },
   {
     "ID ":1.0,
-    "País":"Uruguay",
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -4369,7 +4369,7 @@
   },
   {
     "ID ":1.0,
-    "País":"Argentina",
+    "País":"Colombia",
     "Competidor":"Atlas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -4417,7 +4417,7 @@
   },
   {
     "ID ":1.0,
-    "País":"Argentina",
+    "País":"Colombia",
     "Competidor":"Telesentinel",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -4465,7 +4465,7 @@
   },
   {
     "ID ":1.0,
-    "País":"Uruguay",
+    "País":"Colombia",
     "Competidor":"Alarmar",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -4513,7 +4513,7 @@
   },
   {
     "ID ":3.0,
-    "País":"Argentina",
+    "País":"Colombia",
     "Competidor":"Alarmar",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -4609,7 +4609,7 @@
   },
   {
     "ID ":34.0,
-    "País":"Argentina",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -4657,7 +4657,7 @@
   },
   {
     "ID ":39.0,
-    "País":"Argentina",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -4801,7 +4801,7 @@
   },
   {
     "ID ":44.0,
-    "País":"PERU",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Negocios",
     "Tamaño del Kit":"AVANZADO",
@@ -4849,7 +4849,7 @@
   },
   {
     "ID ":49.0,
-    "País":"Argentina",
+    "País":"URUGUAY",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -5041,7 +5041,7 @@
   },
   {
     "ID ":37.0,
-    "País":"PARAGUAY",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -5137,7 +5137,7 @@
   },
   {
     "ID ":36.0,
-    "País":"PERU",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -5281,7 +5281,7 @@
   },
   {
     "ID ":1.0,
-    "País":"PERU",
+    "País":"Colombia",
     "Competidor":"Telesentinel",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -5329,7 +5329,7 @@
   },
   {
     "ID ":8.0,
-    "País":"Chile",
+    "País":"Uruguay",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -5377,7 +5377,7 @@
   },
   {
     "ID ":13.0,
-    "País":"Chile",
+    "País":"Uruguay",
     "Competidor":"ADT",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -5425,7 +5425,7 @@
   },
   {
     "ID ":17.0,
-    "País":"Chile",
+    "País":"Uruguay",
     "Competidor":"ADT",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -5473,7 +5473,7 @@
   },
   {
     "ID ":23.0,
-    "País":"PARAGUAY",
+    "País":"Uruguay",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -5569,7 +5569,7 @@
   },
   {
     "ID ":24.0,
-    "País":"PARAGUAY",
+    "País":"Uruguay",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -5617,7 +5617,7 @@
   },
   {
     "ID ":21.0,
-    "País":"PARAGUAY",
+    "País":"Uruguay",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -5665,7 +5665,7 @@
   },
   {
     "ID ":31.0,
-    "País":"Argentina",
+    "País":"Uruguay",
     "Competidor":"ADT",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -5761,7 +5761,7 @@
   },
   {
     "ID ":15.0,
-    "País":"PERU",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -5809,7 +5809,7 @@
   },
   {
     "ID ":35.0,
-    "País":"Chile",
+    "País":"Uruguay",
     "Competidor":"Securitas",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -6001,7 +6001,7 @@
   },
   {
     "ID ":68.0,
-    "País":"PARAGUAY",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -6049,7 +6049,7 @@
   },
   {
     "ID ":1.0,
-    "País":"PARAGUAY",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Negocios",
     "Tamaño del Kit":"AVANZADO",
@@ -6097,7 +6097,7 @@
   },
   {
     "ID ":16.0,
-    "País":"PARAGUAY",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Negocios",
     "Tamaño del Kit":"AVANZADO",
@@ -6145,7 +6145,7 @@
   },
   {
     "ID ":2.0,
-    "País":"PARAGUAY",
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -6193,7 +6193,7 @@
   },
   {
     "ID ":98.0,
-    "País":"PARAGUAY",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -6241,7 +6241,7 @@
   },
   {
     "ID ":67.0,
-    "País":"PARAGUAY",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -6289,7 +6289,7 @@
   },
   {
     "ID ":66.0,
-    "País":"PARAGUAY",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -6337,7 +6337,7 @@
   },
   {
     "ID ":100.0,
-    "País":"PARAGUAY",
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -6433,7 +6433,7 @@
   },
   {
     "ID ":50.0,
-    "País":"PARAGUAY",
+    "País":"Argentina",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -6577,7 +6577,7 @@
   },
   {
     "ID ":null,
-    "País":"PERU",
+    "País":"Argentina",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -6673,7 +6673,7 @@
   },
   {
     "ID ":null,
-    "País":"PERU",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -6721,7 +6721,7 @@
   },
   {
     "ID ":null,
-    "País":"PERU",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -6769,7 +6769,7 @@
   },
   {
     "ID ":null,
-    "País":"PERU",
+    "País":"Chile",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -6817,7 +6817,7 @@
   },
   {
     "ID ":1.0,
-    "País":"PERU",
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -6865,7 +6865,7 @@
   },
   {
     "ID ":9.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -6913,7 +6913,7 @@
   },
   {
     "ID ":10.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -6961,7 +6961,7 @@
   },
   {
     "ID ":12.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -7009,7 +7009,7 @@
   },
   {
     "ID ":64.0,
-    "País":null,
+    "País":"Argentina",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -7057,7 +7057,7 @@
   },
   {
     "ID ":62.0,
-    "País":null,
+    "País":"Argentina",
     "Competidor":"Verisure",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -7105,7 +7105,7 @@
   },
   {
     "ID ":2.0,
-    "País":null,
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -7153,7 +7153,7 @@
   },
   {
     "ID ":18.0,
-    "País":null,
+    "País":"Chile",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -7201,7 +7201,7 @@
   },
   {
     "ID ":61.0,
-    "País":null,
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -7249,7 +7249,7 @@
   },
   {
     "ID ":30.0,
-    "País":null,
+    "País":"Argentina",
     "Competidor":"ADT",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -7297,7 +7297,7 @@
   },
   {
     "ID ":97.0,
-    "País":null,
+    "País":"Argentina",
     "Competidor":"Verisure",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -7345,7 +7345,7 @@
   },
   {
     "ID ":24.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -7393,7 +7393,7 @@
   },
   {
     "ID ":3.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -7441,7 +7441,7 @@
   },
   {
     "ID ":7.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -7489,7 +7489,7 @@
   },
   {
     "ID ":1.0,
-    "País":null,
+    "País":"Colombia",
     "Competidor":"Atlas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -7537,7 +7537,7 @@
   },
   {
     "ID ":4.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -7585,7 +7585,7 @@
   },
   {
     "ID ":2.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -7633,7 +7633,7 @@
   },
   {
     "ID ":5.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -7681,7 +7681,7 @@
   },
   {
     "ID ":15.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -7729,7 +7729,7 @@
   },
   {
     "ID ":17.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -7777,7 +7777,7 @@
   },
   {
     "ID ":8.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -7825,7 +7825,7 @@
   },
   {
     "ID ":11.0,
-    "País":null,
+    "País":"PARAGUAY",
     "Competidor":"Protek",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -7873,7 +7873,7 @@
   },
   {
     "ID ":3.0,
-    "País":null,
+    "País":"Uruguay",
     "Competidor":"ADT",
     "Segmento":"Negocios",
     "Tamaño del Kit":"ESTANDAR",
@@ -7921,7 +7921,7 @@
   },
   {
     "ID ":11.0,
-    "País":null,
+    "País":"Uruguay",
     "Competidor":"Securitas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -7969,7 +7969,7 @@
   },
   {
     "ID ":11.0,
-    "País":null,
+    "País":"Uruguay",
     "Competidor":"Securitas",
     "Segmento":"Hogares",
     "Tamaño del Kit":"AVANZADO",
@@ -8017,7 +8017,7 @@
   },
   {
     "ID ":7.0,
-    "País":null,
+    "País":"Uruguay",
     "Competidor":"Maxima",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -8065,7 +8065,7 @@
   },
   {
     "ID ":4.0,
-    "País":null,
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -8113,7 +8113,7 @@
   },
   {
     "ID ":1.0,
-    "País":null,
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -8161,7 +8161,7 @@
   },
   {
     "ID ":8.0,
-    "País":null,
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -8209,7 +8209,7 @@
   },
   {
     "ID ":10.0,
-    "País":null,
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -8257,7 +8257,7 @@
   },
   {
     "ID ":9.0,
-    "País":null,
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -8305,7 +8305,7 @@
   },
   {
     "ID ":6.0,
-    "País":null,
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -8353,7 +8353,7 @@
   },
   {
     "ID ":7.0,
-    "País":null,
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Hogares",
     "Tamaño del Kit":"ESTANDAR",
@@ -8401,7 +8401,7 @@
   },
   {
     "ID ":6.0,
-    "País":null,
+    "País":"PERU",
     "Competidor":"Verisure",
     "Segmento":"Negocios",
     "Tamaño del Kit":"AVANZADO",
